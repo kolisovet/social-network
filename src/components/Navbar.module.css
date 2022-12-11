@@ -1,0 +1,13 @@
+.nav {
+    grid-area: n;
+    background-color: blue;
+}
+
+.item {
+    color: white;
+}
+
+.item.active {
+    color: gold;
+}
+/* <div className={`${s.item} ${s.active}`}> </div> */
