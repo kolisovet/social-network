@@ -10,7 +10,7 @@ export type MessageType = {
 export const Post = (props: MessageType) => {
     return (
         <div className={s.item}>
-            <img src='https://archives.bulbagarden.net/media/upload/2/21/001Bulbasaur.png'/>
+            <img src='https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg'/>
             {props.message}
             <div>
                 <span>likes {props.likesCount}</span>
