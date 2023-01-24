@@ -3,13 +3,17 @@ import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 
 type DialogItemType = {
-    name: string
     id: string
+    name: string
 }
 
 type MessageType = {
+    id: string
     massage: string
 }
+
+type MessagesDataType = Array<MessageType>
+type DialogsDataType = Array<DialogItemType>
 
 const DialogItem = (props: DialogItemType) => {
     let path = '/dialogs/' + props.id
@@ -21,25 +25,39 @@ const DialogItem = (props: DialogItemType) => {
 }
 
 const Message = (props: MessageType) => {
-    return(
-    <div className={s.message}>{props.massage}</div>
+    return (
+        <div className={s.message}>{props.massage}</div>
     )
 }
 
 const Dialogs = () => {
+
+    let dialogsData = [
+        {id: '1', name: 'Sofia'},
+        {id: '2', name: 'Ivan'},
+        {id: '3', name: 'Dima'},
+        {id: '4', name: 'Andrey'},
+    ]
+
+    let messagesData = [
+        {id: '1', message: 'Hi'},
+        {id: '2', message: 'How are you?'},
+        {id: '3', message: 'Yo'},
+        {id: '4', message: 'Yo'},
+    ]
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <DialogItem name='Sofia' id='1'/>
-                <DialogItem name='Ivan' id='2'/>
-                <DialogItem name='Dima' id='3'/>
-                <DialogItem name='Andrey' id='4'/>
+                <DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
+                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
+                <DialogItem name={dialogsData[2].name} id={dialogsData[2].id}/>
 
             </div>
             <div className={s.messages}>
-                <Message massage='Hi'/>
-                <Message massage='How are you?'/>
-                <Message massage='kek'/>
+                <Message massage={messagesData[0].message} id={messagesData[0].id}/>
+                <Message massage={messagesData[1].message} id={messagesData[1].id}/>
+
             </div>
         </div>
     )
