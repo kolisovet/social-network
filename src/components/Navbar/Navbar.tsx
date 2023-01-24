@@ -6,19 +6,19 @@ const Navbar = () => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
-                <NavLink to='/profile' className={({isActive}) => isActive ? 'color: gold'  : 'color: white'}>Profile</NavLink>
+                <NavLink to='/profile' style={({isActive}) => ({color: isActive ? 'gold' : 'white'})}>Profile</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/dialogs'>Messages</NavLink>
+                <NavLink to='/dialogs' style={({isActive}) => ({color: isActive ? 'gold' : 'white'})}>Messages</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/news'>News</NavLink>
+                <NavLink to='/news' style={({isActive}) => ({color: isActive ? 'gold' : 'white'})}>News</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/music'>Music</NavLink>
+                <NavLink to='/music' style={({isActive}) => ({color: isActive ? 'gold' : 'white'})}>Music</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/settings'>Settings</NavLink>
+                <NavLink to='/settings' style={({isActive}) => ({color: isActive ? 'gold' : 'white'})}>Settings</NavLink>
             </div>
         </nav>
     )
