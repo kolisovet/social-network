@@ -2,16 +2,17 @@ import React from "react";
 import s from './MyPosts.module.css';
 import Post, {MessageType} from "./Post/Post";
 
-type PostsDataType = Array<MessageType>
+type PostsType = Array<MessageType>
 
 const MyPosts = () => {
-    let postData = [
+    let posts = [
         {id: '1', message: 'Hi', likesCount: 14},
         {id: '2', message: 'Its my first post', likesCount: 26},
         {id: '3', message: 'Hi', likesCount: 14},
         {id: '4', message: 'Hi', likesCount: 14},
-
+        {id: '5', message: 'Hiiii', likesCount: 14},
     ]
+    let postsElements = posts.map( p => <Post id={p.id} message={p.message} likesCount={p.likesCount}/>)
     return (
         <div className={s.postsBlock}>
             My posts
@@ -24,8 +25,7 @@ const MyPosts = () => {
                 </div>
             </div>
             <div className={s.posts}>
-                <Post id={postData[0].id} message={postData[0].message} likesCount={postData[0].likesCount}/>
-                <Post id={postData[1].id} message={postData[1].message} likesCount={postData[1].likesCount}/>
+                {postsElements}
             </div>
         </div>
     )
