@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import exp from "constants";
+import {rerenderEntireTree} from "../render";
 
 
 
@@ -19,6 +20,7 @@ export type MessageType = {
 }
 export type ProfilePageType = {
     posts: PostType[]
+    newPostText: string
 }
 export type DialogsPageType = {
     dialogs: Array<DialogItemType>
@@ -40,7 +42,8 @@ let state: RootStateType = {
             {id: '3', message: 'Hi', likesCount: 14},
             {id: '4', message: 'Hi', likesCount: 14},
             {id: '5', message: 'Hiiii', likesCount: 14},
-        ]
+        ],
+        newPostText: 'qwerty'
     },
     dialogsPage: {
         dialogs: [
@@ -66,4 +69,19 @@ let state: RootStateType = {
 
     }
 }
+
+export let addPost = () => {
+    let newPost: PostType = {
+        id: '1',
+        message: state.profilePage.newPostText,
+        likesCount: 0
+    }
+    state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state)
+}
+export let updateNewPostText = (newText: string) => {
+    state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
+}
+//rerenderEntireTree(state)
 export default state;

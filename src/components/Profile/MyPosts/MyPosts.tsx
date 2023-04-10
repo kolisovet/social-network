@@ -1,23 +1,43 @@
 import React from "react";
 import s from './MyPosts.module.css';
 import Post from "./Post/Post";
-import {PostType} from "../../../redux/state";
+import {addPost, PostType, ProfilePageType} from "../../../redux/state";
 
 type PropsType = {
-    posts: PostType[]
+    profilePage: ProfilePageType
+    addPost: () => void
+    updateNewPostText: (newText: string) => void
+
 }
 const MyPosts = (props: PropsType) => {
 
-    let postsElements = props.posts.map( p => <Post id={p.id} message={p.message} likesCount={p.likesCount}/>)
+    let postsElements = props.profilePage.posts.map(p => <Post id={p.id} message={p.message}
+                                                               likesCount={p.likesCount}/>)
+
+    let newPostElement = React.createRef<HTMLTextAreaElement>()
+    let onAddPost = () => {
+        //let text = newPostElement.current?.value
+        if (newPostElement.current) {
+            props.addPost()
+            props.updateNewPostText('')
+        }
+    }
+    let onTextareaChange = () => {
+        if (newPostElement.current) {
+            let text = newPostElement.current.value
+            props.updateNewPostText(text)
+        }
+    }
+
     return (
         <div className={s.postsBlock}>
             My posts
             <div>
                 <div>
-                    <textarea></textarea>
+                    <textarea onChange={onTextareaChange} ref={newPostElement} value={props.profilePage.newPostText}/>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={onAddPost}>Add post</button>
                 </div>
             </div>
             <div className={s.posts}>
